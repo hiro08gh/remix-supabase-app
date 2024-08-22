@@ -14,13 +14,13 @@ SUPABASE_URL=""
 SUPABASE_ANON_KEY=""
 ```
 
-migrate Supabase database
+Push Supabase database.
 
 ```bash
 npx prisma db push
 ```
 
-Add Supabase SQL  functions
+Add Supabase SQL  functions.
 
 ```bash
 begin
