@@ -8,7 +8,7 @@ export const authService = (request: Request) => {
 		password: string,
 		emailRedirectTo?: string,
 	) => {
-		const { error } = await supabaseClient.auth.signUp({
+		const { data, error } = await supabaseClient.auth.signUp({
 			email,
 			password,
 			options: {
@@ -16,16 +16,16 @@ export const authService = (request: Request) => {
 			},
 		});
 
-		return { error, headers };
+		return { data, error };
 	};
 
 	const signIn = async (email: string, password: string) => {
-		const { error } = await supabaseClient.auth.signInWithPassword({
+		const { data, error } = await supabaseClient.auth.signInWithPassword({
 			email,
 			password,
 		});
 
-		return { error, headers };
+		return { data, error };
 	};
 
 	const signOut = async () => {
