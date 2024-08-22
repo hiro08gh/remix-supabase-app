@@ -1,5 +1,10 @@
 # remix-supabase-app
 
+- Remix
+- Supabase
+- shadcn/ui
+- Prisma
+
 .env
 
 ```bash
