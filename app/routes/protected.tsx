@@ -11,12 +11,12 @@ export const meta: MetaFunction = () => {
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
 	const { getSession } = authService(request);
-	const { session } = await getSession();
-	if (!session?.user) {
+	const { data } = await getSession();
+	if (!data?.user) {
 		return redirect("/signin");
 	}
 
-	return json({ user: session?.user });
+	return json({ user: data.user });
 };
 
 export default function Protected() {

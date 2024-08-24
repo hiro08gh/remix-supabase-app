@@ -32,13 +32,25 @@ export const authService = (request: Request) => {
 		return supabaseClient.auth.signOut();
 	};
 
-	const getSession = async () => {
-		const {
-			data: { session },
-		} = await supabaseClient.auth.getSession();
+	const exchangeCodeForSession = async (code: string) => {
+		const { data, error } =
+			await supabaseClient.auth.exchangeCodeForSession(code);
 
-		return { session };
+		return { data, error };
 	};
 
-	return { signUp, signIn, signOut, getSession, headers };
+	const getSession = async () => {
+		const { data, error } = await supabaseClient.auth.getUser();
+
+		return { data, error };
+	};
+
+	return {
+		signUp,
+		signIn,
+		signOut,
+		getSession,
+		exchangeCodeForSession,
+		headers,
+	};
 };

@@ -4,8 +4,8 @@ import { authService } from "~/services/auth";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
 	const { getSession } = authService(request);
-	const { session } = await getSession();
-	if (session?.user) {
+	const { data } = await getSession();
+	if (data?.user) {
 		return redirect("/protected");
 	}
 

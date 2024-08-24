@@ -5,8 +5,8 @@ import { authService } from "~/services/auth";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
 	const { signOut, getSession, headers } = authService(request);
-	const { session } = await getSession();
-	if (!session?.user) {
+	const { data } = await getSession();
+	if (!data?.user) {
 		return redirect("/");
 	}
 
