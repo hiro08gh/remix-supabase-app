@@ -1,31 +1,48 @@
 # remix-supabase-app
 
-- Remix
+Remix + Supabase + Cloudflare application.
+
+- Remix (Client and server)
+- Conform (Form library)
+- shadcn/ui (UI development)
 - Supabase
-- shadcn/ui
-- Prisma
+- Prisma (DB schema management)
+
+## Server setup
+
+Running docker and below start supabase cli.
+
+```
+npx suppase start
+```
+
+Setup your Supabase environment. 
 
 .env
 
 ```bash
-DATABASE_URL="postgresql://postgres.project_id:user_pass@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres"
-DIRECT_URL="postgresql://postgres.project_id:user_pass@aws-0-ap-northeast-1.pooler.supabase.com:5432/postgres"
-SUPABASE_URL=""
-SUPABASE_ANON_KEY=""
+DATABASE_URL="postgresql://postgres:postgres@127.0.0.1:54322/postgres"
+DIRECT_URL="postgresql://postgres:postgres@127.0.0.1:54322/postgres"
+SUPABASE_URL="http://127.0.0.1:54321"
+SUPABASE_ANON_KEY="your-Key"
 ```
 
-Push Supabase database.
+Start supabase db rest and Push prisma db push.
 
 ```bash
-npx prisma db push
+npx supabase db reset && npx prisma db push
 ```
 
-Add Supabase SQL  functions.
+## Client setup
+
+Install npm dependcies.
 
 ```bash
-begin
-  insert into public."User" (email)
-  values (new.email);
-  return new;
-end;
+npm install
+```
+
+and start dev server
+
+```bash
+npm run dev
 ```
